@@ -10,6 +10,6 @@ node {
    echo 'Hello from Build Stage'
 
    stage 'FINISHED'
-   echo 'Hello from Last Stage'
+   echo 'Hello from Last Stage ....'
 
 }
