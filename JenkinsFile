@@ -1,0 +1,15 @@
+node {
+   stage 'CHECKOUT'  
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/elangomca/goCubsGo.git']]])
+   echo 'Hello World'
+   
+   stage 'BUILD'
+   def mvnHome = tool 'M3'
+   env.JAVA_HOME = tool 'JAVA8'
+   bat "${mvnHome}/bin/mvn -B verify"
+   echo 'Hello from Build Stage'
+
+   stage 'FINISHED'
+   echo 'Hello from Last Stage'
+
+}
